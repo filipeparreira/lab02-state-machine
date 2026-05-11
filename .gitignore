@@ -1,0 +1,13 @@
+# 1. Ignorar tudo no diretório raiz
+/*
+
+# 2. Abrir exceções para as pastas que você quer manter
+!src/
+!include/
+
+# 3. Se houver arquivos específicos na raiz (como o README ou o próprio .gitignore)
+!.gitignore
+!README.md
+!platformio.ini
+!*.drawio
+!*.png
