@@ -27,7 +27,7 @@ public:
         @param r Objeto do tipo Relogio que será utilizado para verificar os atributos 
         de hora, minutos e segundos. 
 
-        @para linha A linha do display LCD em que será impresso os dados de horário.
+        @param linha A linha do display LCD em que será impresso os dados de horário.
     */
     void atualizarHoraLCD(Relogio* r, int linha);
 

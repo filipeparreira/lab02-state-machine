@@ -116,8 +116,24 @@ class Musicas {
   public:
     Musicas(int pino);
 
+    /**
+      @brief Inicia uma música em específico passado por parâmetro,
+      ajustando todos os atributos para a música selecionada atualmente.
+
+      @param numeroMusica Indice da música a ser tocada
+    */
     void iniciarMusica(int numeroMusica);
+    
+    /**
+      @brief Toca a nota atual e atualiza um indice para uma próxima nota
+      da música já selecionada. Função adaptada do autor, para utilização 
+      de millis ao invés de delay.
+    */
     void atualizar(); 
+
+    /**
+      @brief Para de tocar a música que já está tocando.
+    */
     void pararBuzzer();
 };
 

@@ -1,6 +1,5 @@
 #include "Relogio.h"
 
-// Construtor
 Relogio::Relogio(int h, int m, int s)
 {
   tempo = {h, m, s};
@@ -9,7 +8,6 @@ Relogio::Relogio(int h, int m, int s)
   mudouHora = false;
 }
 
-// Tick (incrementa o tempo)
 void Relogio::tick()
 {
   tempo.segundos++;
@@ -39,7 +37,6 @@ void Relogio::tick()
   }
 }
 
-// Getters
 int Relogio::getSegundos()
 {
   //mudouSeg = false;
