@@ -10,48 +10,36 @@ Relogio::Relogio(int h, int m, int s)
 
 void Relogio::tick()
 {
+  tempo_anterior = {tempo.horas, tempo.minutos, tempo.minutos};
+  
   tempo.segundos++;
-  mudouSeg = true;
-
-  if (tempo.segundos >= 60)
-  {
+  if (tempo.segundos >= 60){
     tempo.segundos = 0;
     tempo.minutos++;
-    mudouMin = true;
-
-    if (tempo.minutos >= 60)
-    {
+    
+    if (tempo.minutos >= 60){
       tempo.minutos = 0;
       tempo.horas++;
-      mudouHora = true;
 
-      if (tempo.horas >= 24)
-      {
+      if (tempo.horas >= 24){
         tempo.horas = 0;
       }
-    } else {
-      mundouHora = false;
     }
-  } else {
-    mundouMin = false;
   }
 }
 
 int Relogio::getSegundos()
 {
-  //mudouSeg = false;
   return tempo.segundos;
 }
 
 int Relogio::getMinutos()
 {
-  //mudouMin = false;
   return tempo.minutos;
 }
 
 int Relogio::getHoras()
 {
-  //mudouHora = false;
   return tempo.horas;
 }
 
@@ -69,6 +57,7 @@ void Relogio::setHoras(int horas){
   tempo.horas = horas;
 }
 
+/*
 // Flags de mudança
 bool Relogio::segMudou()
 {
@@ -83,6 +72,18 @@ bool Relogio::minMudou()
 bool Relogio::horaMudou()
 {
   return mudouHora;
+}*/
+
+bool Relogio::segMudou(){
+  return tempo_anterior.segundos != tempo.segundos;
+}
+
+bool Relogio::minMudou(){
+  return tempo_anterior.minutos != tempo.minutos;
+}
+
+bool Relogio::horaMudou(){
+  return tempo_anterior.horas != tempo.horas;
 }
 
 String Relogio::getSegundosString(){

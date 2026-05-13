@@ -12,7 +12,7 @@ struct Tempo {
 class Relogio {
 private:
 Tempo tempo;
-
+Tempo tempo_anterior;
 public:
 bool mudouSeg;
 bool mudouMin;

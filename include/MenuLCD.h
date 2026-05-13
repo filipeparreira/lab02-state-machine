@@ -44,6 +44,15 @@ public:
         impresso na segunda linha do display LCD.
     */
     void exibirMenuScroll(String variavel, String menuSelecionado);
+    /**
+        @brief Imprime o tempo atual somente uma vez.
+        
+        @param r Objeto do tipo Relogio passado para verificar os valores de tempo.
+        
+        @param linha Inteiro 0 ou 1 referente a linha a ser escrito os valores de 
+        tempo no display. 0 é para o tempo do relógio e 1 é para o tempo do alarme.
+    */
+    void escreverTempo(Relogio* r, int linha);
 };
 
 #endif

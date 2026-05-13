@@ -14,42 +14,32 @@ MenuLCD::MenuLCD(LiquidCrystal *lcdRef, int *x, int *y)
 
 void MenuLCD::atualizarHoraLCD(Relogio *r, int linha)
 {
-  if (r->getHoras() == 0 || r->segMudou())
+  if (r->horaMudou())
   {
     lcd->setCursor(8, linha);
-    if (r->getHoras() < 10)
-    {
-      lcd->print("0");
-      lcd->setCursor(9, linha);
-    }
-    lcd->print(r->getHoras());
+    lcd->print(r->getHorasString());
     lcd->setCursor(10, linha);
     lcd->print(":");
+  } else {
+    Serial.println("NÃO ENTROU EM HR");
   }
 
-  if (r->getMinutos() == 0 || r->minMudou())
+  if (r->minMudou())
   {
     lcd->setCursor(11, linha);
-    if (r->getMinutos() < 10)
-    {
-      lcd->print("0");
-      lcd->setCursor(12, linha);
-    }
-    lcd->print(r->getMinutos());
+    lcd->print(r->getMinutosString());
     lcd->setCursor(13, linha);
     lcd->print(":");
+  } else {
+    Serial.println("NÃO ENTROU EM MIN");
   }
 
-  if (r->getSegundos() == 0 || r->horaMudou())
+  if (r->segMudou())
   {
-
     lcd->setCursor(14, linha);
-    if (r->getSegundos() < 10)
-    {
-      lcd->print("0");
-      lcd->setCursor(15, linha);
-    }
-    lcd->print(r->getSegundos());
+    lcd->print(r->getSegundosString());
+  } else {
+    Serial.println("NÃO ENTROU EM SEG");
   }
 
   lcd->setCursor(*cursorX, *cursorY);
@@ -172,4 +162,17 @@ void MenuLCD::exibirMenuScroll(String variavel, String menuSelecionado)
 
     lcd->print(">"); // Fixo na coluna 15
   }
+}
+
+void MenuLCD::escreverTempo(Relogio* r, int linha){
+  lcd->setCursor(8, linha);
+  lcd->print(r->getHorasString());
+  lcd->setCursor(10, linha);
+  lcd->print(":");
+  lcd->setCursor(11, linha);
+  lcd->print(r->getMinutosString());
+  lcd->setCursor(13, linha);
+  lcd->print(":");
+  lcd->setCursor(14, linha);
+  lcd->print(r->getSegundosString());
 }
