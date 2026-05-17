@@ -95,21 +95,6 @@ enum Estados
   LIGAR_ALARME
 };
 
-// Função de ínicio do relógio
-void inicio()
-{
-  lcd.clear();
-  lcd.home();
-  lcd.setCursor(0, 0);
-  lcd.write("Relogio|");
-  menu.atualizarHoraLCD(&horario, 0);
-  lcd.setCursor(0, 1);
-  lcd.write(byte(1));
-  lcd.setCursor(1, 1);
-  lcd.write("Alarme|");
-  menu.atualizarHoraLCD(&alarme, 1);
-}
-
 // Classe responsável por guardar e manipular os estados do objeto principal (despertador)
 class MaquinaDeEstados
 {
@@ -175,7 +160,6 @@ void MaquinaDeEstados::executar()
       lcd->setCursor(1, 1);
       lcd->write("Alarme|");
       lcd->print("--:--:--");
-      // menu->atualizarHoraLCD(&alarme, 1);
       lcd->setCursor(0, 1);
       estadoInicio = false;
     }
@@ -197,7 +181,8 @@ void MaquinaDeEstados::executar()
     {
       if (horario.getHoras() == alarme.getHoras() &&
           horario.getMinutos() == alarme.getMinutos() &&
-          horario.getSegundos() == alarme.getSegundos())
+          horario.getSegundos() == alarme.getSegundos() &&
+        estadoAlarme)
       {
         Serial.print("Musica selecionada:");
         Serial.println(musicaSelecionada);
