@@ -10,7 +10,7 @@ Relogio::Relogio(int h, int m, int s)
 
 void Relogio::tick()
 {
-  tempo_anterior = {tempo.horas, tempo.minutos, tempo.minutos};
+  tempo_anterior = {tempo.horas, tempo.minutos, tempo.segundos};
   
   tempo.segundos++;
   if (tempo.segundos >= 60){
@@ -44,6 +44,7 @@ int Relogio::getHoras()
 }
 
 void Relogio::setSegundos(int segundos){
+  tempo_anterior.segundos = segundos;
   tempo.segundos = segundos;
 }
 

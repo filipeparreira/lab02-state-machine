@@ -93,7 +93,6 @@ void MenuLCD::exibirMenuScroll(String variavel, String menuSelecionado)
       linhaBaixo = menuSelecionado.substring(0, 16);
     }
 
-    lcd->print(linhaBaixo);
     // Preenche com espaços vazios para apagar caracteres antigos sem usar lcd.clear()
     while (linhaBaixo.length() < 16)
       linhaBaixo += " ";
